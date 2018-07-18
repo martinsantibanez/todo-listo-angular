@@ -41,4 +41,8 @@ export class AppComponent implements OnInit {
     // TODO: Add loading controller
     this.tareaService.crearTarea(this.newTarea);
   }
+
+  guardarTarea(t: Tarea) {
+    console.log(`Guardando tarea: ${t}`);
+  }
 }

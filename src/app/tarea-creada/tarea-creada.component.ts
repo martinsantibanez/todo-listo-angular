@@ -1,18 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Tarea } from '../tarea';
+import { Component } from '@angular/core';
+import { Tarea, EstadoTarea } from '../tarea';
+import { TareaBaseComponent } from '../tarea-base/tarea-base.component';
 
 @Component({
   selector: 'app-tarea-creada',
   templateUrl: './tarea-creada.component.html',
   styleUrls: ['./tarea-creada.component.css']
 })
-export class TareaCreadaComponent implements OnInit {
+export class TareaCreadaComponent extends TareaBaseComponent {
 
-  @Input() tarea: Tarea;
-
-  constructor() { }
-
-  ngOnInit() {
+  obtenerSiguienteEstado(t: Tarea) {
+    return EstadoTarea.EnProceso;
   }
 
 }
