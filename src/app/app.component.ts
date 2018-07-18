@@ -1,10 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Tarea, EstadoTarea, estado2str } from './tarea';
+import { TareaService, ITarea } from './tarea.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+  title = 'Todo Listo!';
+  estadoTareas = EstadoTarea;
+  tareaSeleccionada: Tarea;
+  tareas: Array<Tarea>;
+  newTarea: ITarea;
+  estado2str = estado2str;
+
+  constructor(private tareaService: TareaService) {
+    this.tareas = [];
+    this.newTarea = {
+      titulo: '',
+      descripcion: ''
+    };
+  }
+
+  ngOnInit(): void {
+    // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    // Add 'implements OnInit' to the class.
+    this.tareaService.getTareas()
+        .subscribe(tareas => {
+          this.tareas = tareas;
+        });
+  }
+
+  seleccionarTarea(t: Tarea) {
+    this.tareaSeleccionada = t;
+  }
+
+  crearTarea() {
+    console.log(this.newTarea);
+    // TODO: Add loading controller
+    this.tareaService.crearTarea(this.newTarea);
+  }
 }
