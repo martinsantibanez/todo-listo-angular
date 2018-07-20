@@ -1,12 +1,86 @@
 import { Component, OnInit } from '@angular/core';
-import { Tarea, EstadoTarea, estado2str } from './tarea';
-import { TareaService, ITarea } from './tarea.service';
+import { Tarea, EstadoTarea } from './tarea';
+import { TareaService } from './tarea.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+export class AppComponent implements OnInit {
+  title = 'Todo Listo!';
+  estadoTareas = EstadoTarea;
+  tareaSeleccionada: Tarea;
+  tareas: Array<Tarea>;
+  newTarea: Tarea;
+
+  constructor(public tareaService: TareaService) {
+    this.tareas = [];
+    this.newTarea = new Tarea(null, null, null);
+  }
+
+  ngOnInit() {
+    this.tareaService.getTareas()
+        .subscribe((ts: Array<Tarea>) => {
+          this.tareas = ts;
+        });
+  }
+
+  actualizarTarea(t: Tarea) {
+    console.log(`La tarea ${t} fue actualizada!`);
+  }
+
+  seleccionarTarea(t: Tarea) {
+    this.tareaSeleccionada = t;
+  }
+
+  crearTarea() {
+    console.log(this.newTarea);
+    this.tareaService.crearTarea(this.newTarea);
+  }
+
+  estado2str(e: EstadoTarea) {
+    switch (e) {
+      case EstadoTarea.Creada:    return 'Creada';
+      case EstadoTarea.EnProceso: return 'En Proceso';
+      case EstadoTarea.Terminada: return 'Terminada';
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 export class AppComponent implements OnInit {
   title = 'Todo Listo!';
   estadoTareas = EstadoTarea;
@@ -46,3 +120,4 @@ export class AppComponent implements OnInit {
     console.log(`Guardando tarea: ${t}`);
   }
 }
+*/

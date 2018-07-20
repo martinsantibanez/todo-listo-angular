@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
 import { Tarea } from '../tarea';
 
-export abstract class TareaBaseComponent {
+export abstract class TareaBase {
 
   @Input() tarea: Tarea;
-  @Output() tareaActualizada = new EventEmitter();
+  @Output() tareaActualizada = new EventEmitter<Tarea>();
 
   constructor() { }
 
@@ -16,3 +16,4 @@ export abstract class TareaBaseComponent {
   abstract obtenerSiguienteEstado(t: Tarea);
 
 }
+
