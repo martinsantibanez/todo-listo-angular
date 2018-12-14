@@ -37,7 +37,12 @@ export class AppComponent implements OnInit {
 
   crearTarea() {
     console.log(this.newTarea);
-    this.tareaService.crearTarea(this.newTarea);
+    this.tareaService
+      .crearTarea(this.newTarea)
+      .subscribe(
+        response => this.tareas.push(response),
+        err => console.log(err)
+      );
   }
 
   estado2str(e: EstadoTarea) {
