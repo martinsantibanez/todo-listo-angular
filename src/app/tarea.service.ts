@@ -10,17 +10,26 @@ export class TareaService {
 
   constructor(private http: HttpClient) { }
 
-  tareas: Array<Tarea> = [
-    new Tarea(1, 'Comprar leche', 'Y pañales para el bebe')
-    , new Tarea(2, 'Hacer Taller Angular', 'Falta empezar...')
-    , new Tarea(3, 'Preparar papers', 'Por fin')
-  ];
-
   crearTarea(t: Tarea): Observable<any> {
-    return this.http.post('http://127.0.0.1:8000/tareas/', t);
+    return this.http.post('http://localhost:8000/tareas/', {
+      'titulo': t.titulo,
+      'descripcion': t.descripcion,
+      'estado': t.estado,
+    })
   }
 
-  getTareas(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/tareas/');
+  actualizarTarea(t: Tarea): Observable<any> {
+    return this.http.put(`http://localhost:8000/tareas/${t.id}/`, {
+      'titulo': t.titulo,
+      'descripcion': t.descripcion,
+      'estado': t.estado,
+    })
+  }
+
+  getTareas(user_token): Observable<any> {
+    console.log(`Tarea service user_token: ${user_token}`);
+    return this.http.get('http://localhost:8000/tareas/', {
+      headers: {'Authorization': `Token ${user_token}`}
+    });
   }
 }
