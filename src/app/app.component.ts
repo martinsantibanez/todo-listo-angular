@@ -79,6 +79,8 @@ export class AppComponent implements OnInit {
     console.log(Object.keys(evt));
     console.log(evt['latlng']);
     this.addMarker(evt['latlng']);
+    this.newTarea.lat = evt['latlng']['lat'];
+    this.newTarea.lng = evt['latlng']['lng'];
   }
 
   markers: L.Layer[] = [];
@@ -113,7 +115,6 @@ export class AppComponent implements OnInit {
     this.tareaService.crearTarea(this.newTarea, this.user_token).subscribe(_ => {
       console.log('Creacion Tarea OK');
       this.refrescarTareas();
-
     })
   }
 

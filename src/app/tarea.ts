@@ -17,12 +17,16 @@ export class Tarea {
     titulo: string;
     descripcion;
     estado: EstadoTarea;
+    lat;
+    lng;
 
-    constructor(id, titulo, descripcion, estado = EstadoTarea.Creada) {
+    constructor(id, titulo, descripcion, estado = EstadoTarea.Creada, lat = null, lng = null) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.estado = estado;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     toString() {
