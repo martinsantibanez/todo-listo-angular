@@ -10,20 +10,24 @@ export class TareaService {
 
   constructor(private http: HttpClient) { }
 
-  crearTarea(t: Tarea): Observable<any> {
+  crearTarea(t: Tarea, user_token): Observable<any> {
     return this.http.post('http://localhost:8000/tareas/', {
       'titulo': t.titulo,
       'descripcion': t.descripcion,
       'estado': t.estado,
-    })
+    }, {
+      headers: {'Authorization': `Token ${user_token}`}
+    });
   }
 
-  actualizarTarea(t: Tarea): Observable<any> {
+  actualizarTarea(t: Tarea, user_token): Observable<any> {
     return this.http.put(`http://localhost:8000/tareas/${t.id}/`, {
       'titulo': t.titulo,
       'descripcion': t.descripcion,
       'estado': t.estado,
-    })
+    }, {
+      headers: {'Authorization': `Token ${user_token}`}
+    });
   }
 
   getTareas(user_token): Observable<any> {
