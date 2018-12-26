@@ -16,7 +16,7 @@ export class TareaService {
       'descripcion': t.descripcion,
       'estado': t.estado,
       'lat': t.lat,
-      'long': t.lng
+      'lng': t.lng
     }, {
       headers: {'Authorization': `Token ${user_token}`}
     });
