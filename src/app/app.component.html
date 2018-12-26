@@ -74,9 +74,9 @@
                 </a>
               </td>
               <td>{{ estado2str(t.estado) }}</td>
-              <td>{{t.fecha_inicio}}
-              <td>{{t.fecha_termino}}
-                </td>
+              <td>{{t.fecha_inicio   | date:'dd-MM-yyyy'}}</td>
+              <td>{{t.fecha_termino| date:'dd-MM-yyyy'}}</td>
+                
             </tr>
           </table>
       </div>
