@@ -90,19 +90,6 @@
     <div *ngIf="tareaSeleccionada"
         class="row"
         style="border: 1px solid black;">
-     
-        <div class="form-group" *ngIf="tareaSeleccionada">
-            
-            <label for="fecha_termino">Fecha de inicio</label>
-            <input  #fecha_termino id="fechainicio" type="date" class="form-control"  name="fecha_inicio"  >
-            <button class="submit" (click)="actualizarTarea2(fecha_termino.textContent)"> Guardar </button>
-          </div> 
-  
-        <div class="form-group">
-            <label for="fecha_termino">Fecha de termino</label>
-            <input  #fecha_termino id="fechatermino" type="date" class="form-control"  name="fecha_termino"  >
-            <button class="submit" (click)="actualizarTarea2(fecha_termino.textContent)"> Guardar </button>
-          </div> 
       <div [ngSwitch]="tareaSeleccionada.estado" class="col-md-12">
         
           <app-tarea-creada
