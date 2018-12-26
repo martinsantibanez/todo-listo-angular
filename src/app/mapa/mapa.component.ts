@@ -8,6 +8,7 @@ import * as L from 'leaflet';
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.css']
 })
+//known bug: cuando se agrega una tarea no se actualiza el mapa
 export class MapaComponent implements OnInit {
   @Input() tareas: Tarea[];
 
@@ -44,14 +45,15 @@ export class MapaComponent implements OnInit {
       })
     })
     .bindPopup( function(layer){
-      return "<strong>Titulo</strong>:" + layer.tarea.titulo + "<br/><strong>Descripcion:</strong>" + layer.tarea.descripcion + "<br/><strong>Fecha de inicio: ";
+      var texto = "";
+      texto += "<strong>Titulo</strong>:" + layer.tarea.titulo + "<br/>"
+      texto += "<strong>Descripcion:</strong>" + layer.tarea.descripcion + "<br/>";
+      if(layer.tarea.fecha_inicio)
+        texto += "<strong>Fecha de inicio:</strong> " + layer.tarea.fecha_inicio + "<br/>"
+      if(layer.tarea.fecha_termino)
+        texto += "<strong>Fecha de término:</strong> "+ layer.tarea.fecha_termino;
+      return texto
     } );
-    /*.on('click', function(e){
-      var dialog = L.control.dialog(
-
-      ).setContent("Bonjour");
-      console.log(this.tarea);
-    });*/
     newMarker.tarea = tarea;
     this.markers.push(newMarker);
   }
