@@ -9,13 +9,15 @@ import { TareaCreadaComponent } from './tarea-creada/tarea-creada.component';
 import { TareaEnProcesoComponent } from './tarea-en-proceso/tarea-en-proceso.component';
 import { TareaTerminadaComponent } from './tarea-terminada/tarea-terminada.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapaComponent } from './mapa/mapa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TareaCreadaComponent,
     TareaEnProcesoComponent,
-    TareaTerminadaComponent
+    TareaTerminadaComponent,
+    MapaComponent
   ],
   imports: [
     BrowserModule,

@@ -105,6 +105,13 @@
 
       </div>
     </div>
+    <button (click)="mostrarMapa = !mostrarMapa"
+    class="btn btn-primary mt-3">
+      Mostrar/Ocultar Mapa
+    </button>
+    <app-mapa *ngIf="mostrarMapa">
+
+    </app-mapa>
   </div>
 
   <div *ngIf="!loggedIn">
