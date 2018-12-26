@@ -15,6 +15,11 @@ export class TareaCreadaComponent extends TareaBase {
     console.log(this.tarea);
     this.tareaActualizada.emit(this.tarea);
   }
+  actualizarTarea2(fechafinal){
+    this.tarea.fecha_termino=fechafinal;
+    this.tareaActualizada.emit(this.tarea)
+    console.log(this.tarea)
+  }
 
   obtenerSiguienteEstado(t: Tarea) {
     return EstadoTarea.EnProceso;
