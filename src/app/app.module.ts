@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { UiModule } from './ui/ui.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
 import { TareaCreadaComponent } from './tarea-creada/tarea-creada.component';
@@ -22,6 +23,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     UiModule,
     FormsModule,
     HttpClientModule,
+    BsDatepickerModule.forRoot(),
     LeafletModule.forRoot()
   ],
   providers: [],

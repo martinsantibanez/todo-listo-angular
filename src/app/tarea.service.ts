@@ -20,11 +20,16 @@ export class TareaService {
     });
   }
 
+
+
   actualizarTarea(t: Tarea, user_token): Observable<any> {
+    console.log(t.id);
     return this.http.put(`http://localhost:8000/tareas/${t.id}/`, {
       'titulo': t.titulo,
       'descripcion': t.descripcion,
       'estado': t.estado,
+      'fecha_inicio':t.fecha_inicio,
+      'fecha_termino':t.fecha_termino
     }, {
       headers: {'Authorization': `Token ${user_token}`}
     });

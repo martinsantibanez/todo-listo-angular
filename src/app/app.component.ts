@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   username: string;
   password: string;
-  loggedIn = false;
+  loggedIn = true;
   user_token: string;
   options; 
 
@@ -103,8 +103,12 @@ export class AppComponent implements OnInit {
     console.log(`La tarea ${t} fue actualizada!`);
     this.tareaService.actualizarTarea(t, this.user_token).subscribe(_ => { });
   }
-
+  actualizarTarea2(t: Tarea) {
+    console.log(`La tarea ${t} fue actualizada!`);
+    this.tareaService.actualizarTarea(t, this.user_token).subscribe(_ => { });
+  }
   seleccionarTarea(t: Tarea) {
+    console.log(t)
     this.tareaSeleccionada = t;
   }
 
@@ -116,6 +120,7 @@ export class AppComponent implements OnInit {
 
     })
   }
+
 
   estado2str(e: EstadoTarea) {
     switch (e) {
